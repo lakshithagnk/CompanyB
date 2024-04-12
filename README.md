@@ -1,2 +1,3 @@
 # CompanyB
-Repository "Company B" is dedicated for the documentation of the web application
+Developers branch is used for merging the pull requests from subsystems.<br>
+Complete your work within your subsystem before you merge.
