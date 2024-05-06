@@ -9,6 +9,7 @@ import java.time.LocalDateTime;
 
 @RestController
 @RequestMapping("hr/employee/attendance")
+@CrossOrigin
 public class EmployeeAttendanceController {
 
     private EmployeeAttendanceService employeeAttendanceService;

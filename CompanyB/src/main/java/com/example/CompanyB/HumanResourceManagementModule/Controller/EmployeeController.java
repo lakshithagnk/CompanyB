@@ -14,6 +14,7 @@ import java.util.Map;
 
 @RestController
 @RequestMapping("/hr/employee")
+@CrossOrigin
 public class EmployeeController {
     @Autowired
     private EmployeeService employeeService;
@@ -45,10 +46,9 @@ public class EmployeeController {
 
     @PatchMapping("/updateSalaryInfo/{id}")
     public ResponseEntity<String> updateEmployeeAttendance(@PathVariable String id, @RequestBody Employee updatedEmployee) {
-        try {
-            employeeService.updateEmployeeSalaryInfo(id, updatedEmployee);
-            return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
-        } catch (IllegalArgumentException e) {
+        if (employeeService.updateEmployeeSalaryInfo(id, updatedEmployee)) {
+            return ResponseEntity.status(HttpStatus.OK).build();
+        } else {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Invalid ID: " + id);
         }
     }
@@ -84,7 +84,7 @@ public class EmployeeController {
     @GetMapping("/getCourseLevel/{id}")
     public ResponseEntity<Map<String, Object>> getPositionById(@PathVariable String id) {
         try {
-            int courseLevel = employeeService.getCourseLevelById(id);
+            String courseLevel = employeeService.getCourseLevelById(id);
             String division = employeeService.getEmpDivision(id);
 
             // Create response map with appropriate data types
@@ -102,7 +102,7 @@ public class EmployeeController {
 
 
     @PatchMapping("/updateLevel")
-    public ResponseEntity<String> updateEmployeePosition(@RequestParam String id, @RequestParam Integer Level) {
+    public ResponseEntity<String> updateEmployeePosition(@RequestParam String id, @RequestParam String Level) {
         employeeService.updateEmployeeCourseLevel(id, Level);
         return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
     }
