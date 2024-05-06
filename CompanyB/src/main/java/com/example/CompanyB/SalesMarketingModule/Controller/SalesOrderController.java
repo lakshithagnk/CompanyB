@@ -4,10 +4,7 @@ import com.example.CompanyB.SalesMarketingModule.Model.SalesOrderModel;
 import com.example.CompanyB.SalesMarketingModule.Service.SalesOrderService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.Collections;
 import java.util.List;
@@ -27,7 +24,10 @@ public class SalesOrderController {
     }
 
     @GetMapping("checkStock")
+
     public List<SalesOrderModel> checkStockAvailability(@RequestParam("orderId") String orderId, Model model) {
+
+        //@CrossOrigin(origins = "https://localhost:5173")
         // Fetch order details by orderId
         SalesOrderModel order = salesOrderService.fetchOrderDetails(orderId);
 

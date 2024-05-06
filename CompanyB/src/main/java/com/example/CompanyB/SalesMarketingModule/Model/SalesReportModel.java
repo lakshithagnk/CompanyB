@@ -6,7 +6,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
 import java.util.Date;
 
 @Data
-@Document(collection = "Sales")
+@Document(collection = "SalesMarketing/Sales")
 public class SalesReportModel {
 
     private String id;
@@ -14,5 +14,8 @@ public class SalesReportModel {
     private double amount;
     private double profit;
 
-    // Getters and setters
+    private String productId;
+    private String productName;
+    private int quantitySold;
+
 }

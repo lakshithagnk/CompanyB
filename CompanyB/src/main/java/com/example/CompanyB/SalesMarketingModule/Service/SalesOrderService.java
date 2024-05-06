@@ -56,7 +56,9 @@ public class SalesOrderService {
 
         return order;
     }
+
     public SalesOrderModel fetchOrderDetails(String orderId) {
+
         // Implement the logic to fetch order details by orderId from the database
         return salesOrderRepository.findById(orderId).orElse(null);
     }
